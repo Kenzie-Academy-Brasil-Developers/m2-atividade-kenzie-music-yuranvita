@@ -1,24 +1,33 @@
-const kenzieMusic = class {
-  static musicaAtual = {};
+import { Music } from "../models/Music.js";
+import { Playlist } from "../models/Playlist.js";
+
+const playlist = new Playlist("CabaréDaKenzie", "YuranLindo");
+
+class kenzieMusic {
   static async buscaMusica(nomeMusica) {
     if (nomeMusica.trim() === "") {
-      alert("Digite o nome de alguma música.")
-      return console.log("Busca inválida!")
+      alert("Digite o nome de alguma música.");
+      return console.log("Busca inválida!");
     }
     await fetch(`https://simple-spotify-api.herokuapp.com?search=${nomeMusica}`)
       .then((res) => res.json())
       .then((res) => {
-        const musica = res.data[0];
-        if (!musica) {
+        const soundMusic = res.data[0];
+        if (!soundMusic) {
           alert("Música não encontrada!");
-          this.musicaAtual = {};
-          return console.log("Música não encontrada!")
+          return console.log("Música não encontrada!");
         } else {
-          this.musicaAtual = musica;
+          const newMusic = new Music(
+            soundMusic.id,
+            soundMusic.name,
+            soundMusic.artists,
+            soundMusic.duration_ms,
+            soundMusic.music_url
+          );
+          playlist.addMusic(newMusic);
         }
       });
   }
-};
+}
 
 export default kenzieMusic;
-  

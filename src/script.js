@@ -8,18 +8,12 @@ import kenzieMusic from "./utils/kenzieMusic.js";
 
 // Comece seu código a partir desse comentário.
 
-
-
 // Lógica responsável pela busca de músicas digitadas no site.
 const searchButton = document.getElementById("searchButton");
 
+
 searchButton.addEventListener("click", async () => {
   const input = document.getElementById("inputMusic");
-  await kenzieMusic.buscaMusica(input.value)
+  await kenzieMusic.buscaMusica(input.value);
   input.value = "";
-  // console.log(kenzieMusic.musicaAtual);
-})
-
-
-
-
+});
