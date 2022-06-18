@@ -1,5 +1,5 @@
-import { Music } from "../class/Music.js.js";
-import { Playlist } from "../class/Playlist.js.js";
+import { Music } from "../models/Music.js.js.js";
+import { Playlist } from "../models/Playlist.js.js.js";
 
 const playlist = new Playlist("CabaréDaKenzie", "YuranLindo");
 
